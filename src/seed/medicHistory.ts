@@ -10,7 +10,7 @@ export const createMedicHistories = async (
 ) => {
   let i = 0;
   while (i < users.length && i < sicknesses.length && i < doctors.length) {
-    const medicHistoryData: any = {
+    const medicHistoryData = {
       id: i + 1,
       medicalAppointmentDate: new Date(),
       description: 'Se le mando crema',

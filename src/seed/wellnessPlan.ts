@@ -1,4 +1,6 @@
-export const wellnessPlanData: any = [
+import { WellnessActivityAttributes } from "../models/interfaces/WellnessActivity/WellnessActivity";
+
+export const wellnessPlanData: WellnessActivityAttributes[] = [
   {
     id: 1,
     name: 'Eat Whole Eggs',

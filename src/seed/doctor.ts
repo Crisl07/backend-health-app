@@ -1,4 +1,6 @@
-export const doctorData: any = [
+import { DoctorAttributes } from "../models/interfaces/Doctor/Doctor";
+
+export const doctorData: DoctorAttributes[] = [
   {
     id: 1,
     name: 'Natalia',

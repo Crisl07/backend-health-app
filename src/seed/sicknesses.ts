@@ -1,4 +1,6 @@
-export const sicknessesData: any = [
+import { SicknessAttributes } from "../models/interfaces/Sickness/Sickness";
+
+export const sicknessesData: SicknessAttributes[] = [
   {
     id: 1,
     name: 'Coronavirus',

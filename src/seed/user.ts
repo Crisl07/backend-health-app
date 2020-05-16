@@ -1,6 +1,7 @@
+import { UserAttributes } from "../models/interfaces/User/User";
 import bcrypt from 'bcrypt';
 
-export const userData: any = [
+export const userData: UserAttributes[] = [
   {
     id: 1,
     name: 'Cristian',

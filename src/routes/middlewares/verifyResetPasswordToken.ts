@@ -1,4 +1,4 @@
-import { verify } from 'jsonwebtoken';
+import { verify, VerifyErrors } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 
 export const verifyResetPasswordToken = (
@@ -9,7 +9,7 @@ export const verifyResetPasswordToken = (
   if (!req.body.token) return res.status(403).send('Token is required');
   let token = req.body.token;
 
-  verify(token, process.env.ACCESS_TOKEN_SECRET, (err: any, decoded: any) => {
+  verify(token, process.env.ACCESS_TOKEN_SECRET, (err: VerifyErrors, decoded: object) => {
     if (err) return res.status(404).send('Time expired');
     req['user'] = decoded['user'];
     next();

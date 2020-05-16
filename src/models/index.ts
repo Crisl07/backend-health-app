@@ -6,7 +6,7 @@ import { SicknessFactory } from './Sickness';
 import { UserFactory } from './User';
 import { WellnessActivityFactory } from './WellnessActivity';
 import { SequelizeConfig } from '../config/sequelizeconfiginterface';
-import { userData } from "../seed/user";
+import { userData } from '../seed/user';
 
 export const createModels = (sequelizeConfig: SequelizeConfig): DbInterface => {
   const { database, username, password, params } = sequelizeConfig;
@@ -19,10 +19,10 @@ export const createModels = (sequelizeConfig: SequelizeConfig): DbInterface => {
     Sickness: SicknessFactory(sequelize, Sequelize),
     MedicHistory: MedicHistoryFactory(sequelize, Sequelize),
     WellnessActivity: WellnessActivityFactory(sequelize, Sequelize),
-    Doctor: DoctorFactory(sequelize, Sequelize)
+    Doctor: DoctorFactory(sequelize, Sequelize),
   };
 
-  Object.keys(db).forEach(modelName => {
+  Object.keys(db).forEach((modelName) => {
     if (db[modelName].associate) {
       db[modelName].associate(db);
     }

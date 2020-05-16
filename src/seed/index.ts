@@ -1,5 +1,5 @@
-import { db } from "../database/db";
-import { userData } from "../seed/user";
+import { db } from '../database/db';
+import { userData } from '../seed/user';
 import { wellnessPlanData } from '../seed/wellnessPlan';
 import { sicknessesData } from '../seed/sicknesses';
 import { createMedicHistories } from '../seed/medicHistory';
@@ -16,8 +16,8 @@ export const seed = async () => {
   const wellnessActivities = await db.WellnessActivity.findAll();
   sicknesses.forEach((sickness) => {
     wellnessActivities.forEach(async (activity) => {
-      await sickness.addWellnessActivity(activity.id)
+      await sickness.addWellnessActivity(activity.id);
     });
   });
   await createMedicHistories(users, sicknesses, doctors);
-}
+};

@@ -1,38 +1,50 @@
 import * as Sequelize from 'sequelize';
 import { SequelizeAttributes } from 'typings/SequelizeAttributes';
-import { SicknessAttributes, SicknessInstance } from "./interfaces/Sickness/Sickness";
+import {
+  SicknessAttributes,
+  SicknessInstance,
+} from './interfaces/Sickness/Sickness';
 
-export const SicknessFactory = (sequelize: Sequelize.Sequelize, DataTypes: Sequelize.DataTypes): Sequelize.Model<SicknessInstance, SicknessAttributes> => {
+export const SicknessFactory = (
+  sequelize: Sequelize.Sequelize,
+  DataTypes: Sequelize.DataTypes,
+): Sequelize.Model<SicknessInstance, SicknessAttributes> => {
   const attributes: SequelizeAttributes<SicknessAttributes> = {
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     scientificNotation: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     img: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   };
 
-  const Sickness = sequelize.define<SicknessInstance, SicknessAttributes>('Sickness', attributes);
+  const Sickness = sequelize.define<SicknessInstance, SicknessAttributes>(
+    'Sickness',
+    attributes,
+  );
 
-  Sickness.associate = models => {
-    Sickness.hasMany(models.MedicHistory, { foreignKey: "sicknessId", as: 'medicHistories' });
+  Sickness.associate = (models) => {
+    Sickness.hasMany(models.MedicHistory, {
+      foreignKey: 'sicknessId',
+      as: 'medicHistories',
+    });
     Sickness.belongsToMany(models.User, {
       through: 'UserSicknesses',
-      as: 'sickPeople'
+      as: 'sickPeople',
     });
     Sickness.belongsToMany(models.WellnessActivity, {
       through: 'SicknessWellnessActivities',
-      as: 'wellnessActivities'
+      as: 'wellnessActivities',
     });
   };
 
